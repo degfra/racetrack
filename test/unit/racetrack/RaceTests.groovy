@@ -2,13 +2,13 @@ package racetrack
 
 
 
-import grails.test.*	//mixin
+import grails.test.*	//mixin.
 //import org.junit.* 
 
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */
-@TestFor(Race)
+//@TestFor(Race)
 class RaceTests {	//extends GrailsUnitTestCase
 
     void testSomething() {
@@ -16,7 +16,7 @@ class RaceTests {	//extends GrailsUnitTestCase
     } 
 	
 	void testInMiles(){
-		def race = new Race(distance: 5.0)
-		assertEquals 3.107, race.inMiles()
+		def race = new Race(distance: 5.0) 
+		assertEquals 3.107, race.inMiles()  
 	}
 }

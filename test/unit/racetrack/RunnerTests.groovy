@@ -2,16 +2,16 @@ package racetrack
 
 
 
-import grails.test.*		//mixin.
-//import org.junit.*
+import grails.test.mixin.*
+import org.junit.*
 
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */
-//@TestFor(Registration)
-class RegistrationTests {
+@TestFor(Runner)
+class RunnerTests {
 
     void testSomething() {
-       // fail "Implement me"
+       fail "Implement me"
     }
 }
