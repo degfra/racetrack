@@ -10,6 +10,7 @@ class Runner {
 		dateOfBirth()
 		gender(inList: ["M", "F"])
 		address()
+		city()
 		state()
 		zipcode()
 		email(email:true)
