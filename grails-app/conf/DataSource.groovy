@@ -34,10 +34,10 @@ environments {
     production {
         dataSource {
             dbCreate = "update"
-            //url = "jdbc:h2:prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
-			url = "jdbc:mysql://localhost:3306/racetrack_prod? autoreconnect=true"
+            url = "jdbc:h2:prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
+			//url = "jdbc:mysql://localhost:3306/racetrack_prod? autoreconnect=true"
             
-			/*pooled = true
+			pooled = true
             properties {
                maxActive = -1
                minEvictableIdleTimeMillis=1800000
@@ -47,7 +47,7 @@ environments {
                testWhileIdle=true
                testOnReturn=true
                validationQuery="SELECT 1" 
-            } */
+            } 
         }
     }
 }
