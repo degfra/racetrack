@@ -22,7 +22,7 @@
 			<div class="message" role="status">\${flash.message}</div>
 			</g:if>
 			<ol class="property-list ${domainClass.propertyName}">
-			<%  excludedProps = Event.allEvents.toList() << 'id' << 'version' 
+			<%  excludedProps = Event.allEvents.toList() << 'id' << 'version'
 				allowedNames = domainClass.persistentProperties*.name << 'dateCreated' << 'lastUpdated'
 				props = domainClass.properties.findAll { allowedNames.contains(it.name) && !excludedProps.contains(it.name) }
 				Collections.sort(props, comparator.constructors[0].newInstance([domainClass] as Object[]))
