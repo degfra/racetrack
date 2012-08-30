@@ -1,4 +1,6 @@
 @artifact.package@class @artifact.name@ {
 
-    def index() { }
+    //def index() { }
+	
+	def scaffold = true
 }

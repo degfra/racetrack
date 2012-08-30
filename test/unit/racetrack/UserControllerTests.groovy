@@ -1,13 +1,10 @@
 package racetrack
 
 
-
-import org.junit.*
-import grails.test.mixin.*
-
-@TestFor(UserController)
-@Mock(User)
-class UserControllerTests {
+import grails.test.*
+//@TestFor(UserController)
+//@Mock(User)
+class UserControllerTests extends ControllerUnitTestCase {
 
     def populateValidParams(params) {
         assert params != null
@@ -17,9 +14,10 @@ class UserControllerTests {
 
     void testIndex() {
         controller.index()
-        assert "/user/list" == response.redirectedUrl
+        //assert "/user/list" == response.redirectedUrl
+		assertEquals "list", controller.redirectArgs["action"]
     }
-
+/*
     void testList() {
 
         def model = controller.list()
@@ -42,17 +40,18 @@ class UserControllerTests {
 
         response.reset()
 
-        populateValidParams(params)
+       populateValidParams(params)
         controller.save()
 
         assert response.redirectedUrl == '/user/show/1'
         assert controller.flash.message != null
         assert User.count() == 1
+        
     }
-
+*/
     void testShow() {
-        controller.show()
-
+        /* controller.show()
+		
         assert flash.message != null
         assert response.redirectedUrl == '/user/list'
 
@@ -66,8 +65,18 @@ class UserControllerTests {
         def model = controller.show()
 
         assert model.userInstance == user
+        */
+		
+		def jdoe = new User(login:"jdoe")
+		def suziq = new User(login:"suziq")
+		mockDomain(User, [jdoe, suziq])
+		
+		controller.params.id = 2
+		def map = controller.show()
+		assertEquals "suziq", map.userInstance.login
+		
     }
-
+/*
     void testEdit() {
         controller.edit()
 
@@ -151,5 +160,22 @@ class UserControllerTests {
         assert User.count() == 0
         assert User.get(user.id) == null
         assert response.redirectedUrl == '/user/list'
-    }
+    } */
+	
+	void testAuthenticate() {
+		def jdoe = new User(login:"jdoe", password:"password")
+		mockDomain(User, [jdoe])
+		
+		controller.params.login = "jdoe"
+		controller.params.password = "password"
+		controller.authenticate()
+		assertNotNull controller.session.user
+		assertEquals "jdoe", controller.session.user.login
+		
+		controller.params.password = "foo"
+		controller.authenticate()
+		assertTrue controller.flash.message.startsWith("Sorry, jdoe")
+	}
+	
+	
 }

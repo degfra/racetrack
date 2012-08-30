@@ -2,4 +2,8 @@
 
     static constraints = {
     }
+	
+	String toString(){
+		//TODO: make me interesting
+	}
 }

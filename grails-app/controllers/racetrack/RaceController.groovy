@@ -1,7 +1,7 @@
 package racetrack
 
 class RaceController {
-	def scaffold = Race
+	static scaffold = Race
 
     //def index() { }
 }
