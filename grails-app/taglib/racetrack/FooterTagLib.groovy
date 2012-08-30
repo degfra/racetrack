@@ -3,7 +3,7 @@ package racetrack
 class FooterTagLib {
 	
 	def thisYear = {
-		out << new Date().format("YYYY")
+		out << new Date().format("yyyy")
 	}
 	
 	def copyright = {attrs, body->
