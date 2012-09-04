@@ -2,9 +2,21 @@ package racetrack
 
 
 import grails.test.*
+import org.codehaus.groovy.grails.plugins.codecs.*
+
 //@TestFor(UserController)
 //@Mock(User)
 class UserControllerTests extends ControllerUnitTestCase {
+	
+	protected void setup() {
+		super.setUp()
+		String.metaClass.encodeAsBase64 = {->
+			Base64Codec.encode(delegate)
+		}
+		String.metaClass.encodeAsSHA = {->
+			SHACodec.encode(delegate)
+		}
+	}
 
     def populateValidParams(params) {
         assert params != null
@@ -163,7 +175,8 @@ class UserControllerTests extends ControllerUnitTestCase {
     } */
 	
 	void testAuthenticate() {
-		def jdoe = new User(login:"jdoe", password:"password")
+		loadCodec(SHA1Codec)
+		def jdoe = new User(login:"jdoe", password:"password".encodeAsSHA1())
 		mockDomain(User, [jdoe])
 		
 		controller.params.login = "jdoe"

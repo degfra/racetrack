@@ -1,5 +1,5 @@
 Testsuite: racetrack.UserControllerTests
-Tests run: 3, Failures: 0, Errors: 0, Time elapsed: 6.557 sec
+Tests run: 3, Failures: 0, Errors: 0, Time elapsed: 6.658 sec
 ------------- Standard Output ---------------
 --Output from testAuthenticate--
 --Output from testIndex--
@@ -11,6 +11,6 @@ Tests run: 3, Failures: 0, Errors: 0, Time elapsed: 6.557 sec
 --Output from testShow--
 ------------- ---------------- ---------------
 
-Testcase: testAuthenticate took 6.073 sec
-Testcase: testIndex took 0.134 sec
-Testcase: testShow took 0.28 sec
+Testcase: testAuthenticate took 5.902 sec
+Testcase: testIndex took 0.291 sec
+Testcase: testShow took 0.388 sec
